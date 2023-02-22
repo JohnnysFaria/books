@@ -1,5 +1,5 @@
-import React from 'react'
 import Input from '../Input'
+import { useState } from 'react'
 import styled from 'styled-components'
 
 const PesquisaContainer = styled.section`
@@ -24,17 +24,20 @@ const Subtitulo = styled.h3`
         margin-bottom: 40px;
 `
 
-const index = () => {
-  return (
-    <PesquisaContainer>
+const Index = () => {
+    const [text, setText] = useState(null);
+    
+    return (
+        <PesquisaContainer>
         <Titulo>Já sabe por onde começar?</Titulo>
         <Subtitulo>Encontre seu livro em nossa estante.</Subtitulo>
         <Input 
             placeholder='Escreva sua próxima leitura'
-            onBlur={event => console.log(event.target.value)}
+            onBlur={event => setText(event.target.value)}
         />
+        <p>{text}</p>
     </PesquisaContainer>
   )
 }
 
-export default index
+export default Index
